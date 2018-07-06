@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel=stylesheet type="text/css" href="css.css">
+<script type="text/javascript" src="../js_global.js"></script>
+<script type="text/javascript" src="../w2p.js"></script>
+<link rel="stylesheet" href="../photoswipe/photoswipe.css">
+<link rel="stylesheet" href="../photoswipe/default-skin/default-skin.css">
+<script type="text/javascript" src="../photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="../photoswipe/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="../photoswipe/popup.js"></script>
+<script type="text/javascript" src="page.js"></script>
+<script id="js_gl" type="text/javascript"></script>
+<script type="text/javascript">
+document.getElementById('js_gl').src='gl.js?ts='+getDTID();
+</script>
+<title>Glossary Details</title>
+<style>
+@font-face {
+font-family: "HelveticaNeue-Light";
+src: url("../font/HelveticaNeue-Light-08.ttf");
+}
+
+body{
+	background: linear-gradient(#a3170c, #fe9578);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color:#FFFFFF;
+	margin: 0px;
+	width: 100vw;
+	height: 100vh;
+	padding: 0px;
+	font-family: "HelveticaNeue-Light";
+}
+
+#div_image{
+width: 100vw;
+height: 34vh;
+background-position: center;
+background-size: cover;
+overflow: hidden;
+}
+
+#div_title{
+background-color: rgba(255,255,255,0.5);
+color: black;
+text-align: center;
+text-transform: uppercase;
+}
+
+#table_points{
+width: 100%;
+border: 0px;
+border-spacing: 0pt 20pt;
+padding: 0px;
+}
+#table_points td{
+width: 100%;
+padding: 0pt;
+background-color: rgb(240,240,240);
+}
+#table_points td div{
+width: 100%;
+padding: 10pt 6pt;
+}
+
+
+#audio_1{
+display: block;
+width: 100%;
+}
+
+
+#div_pmain{
+width: 100vw;
+overflow-x: hidden;
+overflow-y: auto;
+}
+
+
+#div_audio{
+overflow: hidden;
+width:100%;
+}
+
+
+#div_finish_btn{
+margin: 0pt auto;
+width: 65%;
+padding: 10pt 0pt;
+box-sizing: border-box;
+text-align: center;
+border: 1px solid white;
+border-radius: 20pt;
+text-transform: uppercase;
+}
+
+.Table_PTR{
+border: 1px solid white;
+width: 90%;
+height: 13vh;
+border-spacing: 0px;
+margin: 0 auto;
+border-radius: 5pt;
+}
+.Table_PTR td{
+width: 100%;
+height: 100%;
+border: 0px;
+font-size: 10pt;
+text-align: left;
+vertical-align: middle;
+padding: 10pt 10pt;
+}
+
+.Img_ImgDesc{
+display: block;
+width: 100%;
+border: 0px;
+margin: 0 auto;
+}
+
+.Div_Space, .Div_Space2{
+height: 8pt;
+}
+
+@media(max-height: 480px){ /* iPhone 4 */
+
+}
+
+@media(min-height: 481px) and (max-height: 568px){ /* iPhone 5 */
+
+}
+
+@media(min-height: 569px) and (max-height: 667px){ /* iPhone 6 */
+
+}
+
+@media(min-height: 668px) and (max-height: 959px){ /* iPhone 6 Plus */
+
+}
+
+@media(min-height: 960px) and (min-width: 768px){  /* iPad */
+
+}
+</style>
+</head>
+<body>
+<div class="Div_Main" id="div_main">
+
+
+<div id="div_image"></div>
+<div id="div_audio">
+<audio id="audio_1" x-webkit-airplay="deny" controls>
+<source id="source_1" type="audio/mpeg"></source>
+</audio>
+</div>
+
+
+<div id="div_title">
+<table style="width:100%;border-spacing:0px;border:0px;padding:0px;margin:0;"><tr><td id="td_title" style="width:100%;height:100%;border:0px;border-spacing:0px;text-align:center;vertical-align:middle;padding-top:3pt;padding-bottom:3pt;"></td></tr></table>
+</div>
+
+<div id="div_pmain">
+<div style="font-size:14pt;font-weight:bold;text-align:center;padding: 5pt 0pt;"></div>
+</div>
+
+
+<div id="div_finish_btn">Finish</div><br>
+
+</div>
+
+<script type="text/javascript">
+var isInDevelopment=false;
+var topic=0;
+var subtopic=0;
+
+
+function setTopicAndSubtopic(_topic, _subtopic){
+topic=_topic;
+subtopic=_subtopic;
+}
+
+
+function refreshGLDetails(){
+//o('div_pmain').innerHTML='<div style="font-size:14pt;font-weight:bold;text-align:center;padding: 13pt 0pt;">Points to Remember:</div>';
+o('td_title').innerHTML=gl[topic].subtopics[subtopic].name;
+if(gl[topic].subtopics[subtopic].audio!=null && gl[topic].subtopics[subtopic].audio!=''){
+o('audio_1').onerror=function(){removeAudio();};
+o('source_1').setAttribute('src',gl[topic].subtopics[subtopic].audio);
+}else removeAudio();
+o('audio_1').load();
+o('audio_1').play();
+for(var k=0; k<gl[topic].subtopics[subtopic].points.length; k++){
+var tb=ce('table');
+tb.setAttribute('class','Table_PTR');
+var tr=ce('tr');
+var td=ce('td');
+td.innerHTML=gl[topic].subtopics[subtopic].points[k];
+tr.appendChild(td);
+tb.appendChild(tr);
+o('div_pmain').appendChild(tb);
+var div_space=ce('div');
+div_space.setAttribute('class','Div_Space');
+o('div_pmain').appendChild(div_space);
+}
+var div_space2=ce('div');
+div_space2.setAttribute('class','Div_Space2');
+o('div_pmain').appendChild(div_space2);
+if(gl[topic].subtopics[subtopic].img!=null){
+o('div_image').style.backgroundImage="url('"+gl[topic].subtopics[subtopic].img+"')";
+}
+}
+//refreshGLDetails();
+
+
+function removeAudio(){
+o('audio_1').style.display='none';
+o('div_pmain').style.height='81vh';
+//o('div_audio').style.height='13vh';
+}
+
+
+function setIsInDevelopment(){
+isInDevelopment=true;
+o('div_finish_btn').ontouchend=function(){};
+o('div_finish_btn').ondblclick=function(){back();};
+}
+function resetDataAndRefresh(_data){
+gl=_data;
+o('div_pmain').style.height='73vh';
+o('audio_1').style.display='';
+refreshGLDetails();
+}
+
+
+window.onload=function(){
+o('div_finish_btn').ontouchend=function(){back();};
+setTimeout(function(){
+data=Phone.passedByPreviousPageObject.data;
+setTopicAndSubtopic(data.topicIndex,data.subtopicIndex);
+refreshGLDetails();
+},200);
+}
+
+
+function back(){
+if(isInDevelopment)window.parent.PAGEBACK3();
+else Phone.back();
+}
+</script>
+</body>
+</html>

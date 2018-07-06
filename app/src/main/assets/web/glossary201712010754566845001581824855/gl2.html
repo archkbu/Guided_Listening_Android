@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel=stylesheet type="text/css" href="css.css">
+<script type="text/javascript" src="../js_global.js"></script>
+<script type="text/javascript" src="../w2p.js"></script>
+<link rel="stylesheet" href="../photoswipe/photoswipe.css">
+<link rel="stylesheet" href="../photoswipe/default-skin/default-skin.css">
+<script type="text/javascript" src="../photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="../photoswipe/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="../photoswipe/popup.js"></script>
+<script id="js_page" type="text/javascript"></script>
+<script id="js_gl" type="text/javascript"></script>
+<script type="text/javascript">
+var ttts=getDTID();
+document.getElementById('js_page').src='page.js?ts='+ttts;
+document.getElementById('js_gl').src='gl.js?ts='+ttts;
+</script>
+<title>Glossary Details</title>
+<style>
+@font-face {
+font-family: "HelveticaNeue-Light";
+src: url("../font/HelveticaNeue-Light-08.ttf");
+}
+
+body{
+	font-family: "HelveticaNeue-Light";
+	color:#FFFFFF;
+}
+
+.Div_Main{
+	background: linear-gradient(#a3170c, #fe9578);
+}
+
+hr{
+color: 1px solid white;
+box-shadow: 0 5px 5px -5px rgba(0,0,0,0.5);
+}
+
+#div_glcontent{
+	font-size: 10pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 5px;
+	font-size: 12pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 40pt;
+	color:black;
+	text-align:center;
+	font-size: 10pt;
+}
+
+@media (min-aspect-ratio: 1/2){
+#div_glcontent{
+	font-size: 12pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 10pt;
+	font-size: 14pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 30pt;
+	color:black;
+	text-align:center;
+	font-size: 10pt;
+}
+}
+
+@media (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/4) {
+#div_glcontent{
+	font-size: 12pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 10pt;
+	font-size: 14pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 60pt;
+	color:black;
+	text-align:center;
+	font-size: 18pt;
+}
+}
+
+@media (min-aspect-ratio: 10/16) and (max-aspect-ratio: 2/3) {
+#div_glcontent{
+	font-size: 10pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 10px;
+	font-size: 12pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 30pt;
+	color:black;
+	text-align:center;
+	font-size: 10pt;
+}
+}
+
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 10/16) {
+#div_glcontent{
+	font-size: 12pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 10pt;
+	font-size: 14pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 30pt;
+	color:black;
+	text-align:center;
+	font-size: 10pt;
+}
+}
+
+@media (min-aspect-ratio: 1/2) and(max-aspect-ratio: 9/16){
+#div_glcontent{
+	font-size: 12pt;
+}
+
+#div_glname{
+	text-transform: uppercase;
+	margin: 10pt;
+	font-size: 14pt;
+}
+
+#title{
+	text-transform: uppercase;
+	background-color:rgba(255,255,255,0.5);
+	line-height: 30pt;
+	color:black;
+	text-align:center;
+	font-size: 10pt;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="Div_Main">
+<div id="title"></div>
+<br>
+
+<div id="div_glarea">
+<div id="div_glname"></div>
+<hr>
+<br>
+
+<div id="div_glcontent"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+var isInDevelopment=false;
+var groupIndex=0;
+var termIndex=0;
+
+
+function setIK(_i, _k){
+groupIndex=_i;
+termIndex=_k;
+}
+
+function refreshGLDetails(){
+o('title').innerHTML=gl[groupIndex].title;
+o('div_glname').innerHTML=gl[groupIndex].gl[termIndex].name;
+o('div_glcontent').innerHTML=gl[groupIndex].gl[termIndex].desc;
+}
+
+
+function setIsInDevelopment(){
+isInDevelopment=true;
+}
+function resetDataAndRefresh(_data){
+gl=_data;
+refreshGLDetails();
+}
+
+
+window.onload=function(){setTimeout(function(){
+
+data=Phone.passedByPreviousPageObject.data;
+setIK(data.i, data.k);
+refreshGLDetails();
+
+},100);}
+</script>
+</body>
+</html>

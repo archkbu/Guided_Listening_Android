@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel=stylesheet type="text/css" href="css.css">
+<script type="text/javascript" src="../js_global.js"></script>
+<script type="text/javascript" src="../w2p.js"></script>
+<link rel="stylesheet" href="../photoswipe/photoswipe.css">
+<link rel="stylesheet" href="../photoswipe/default-skin/default-skin.css">
+<script type="text/javascript" src="../photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" src="../photoswipe/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" src="../photoswipe/popup.js"></script>
+<script id="js_page" type="text/javascript"></script>
+<script id="js_gl" type="text/javascript"></script>
+<script type="text/javascript">
+var ttts=getDTID();
+document.getElementById('js_page').src='page.js?ts='+ttts;
+document.getElementById('js_gl').src='gl.js?ts='+ttts;
+</script>
+<title>Glossary</title>
+<style>
+/*
+body{
+background-color: #d47171;
+font-family: 'Helvetica';
+overflow: hidden;
+}
+*/
+
+@font-face {
+font-family: "HelveticaNeue-Light";
+src: url("../font/HelveticaNeue-Light-08.ttf");
+}
+
+body{
+	
+	font-family: "HelveticaNeue-Light";
+}
+
+.Div_Main{
+	background: linear-gradient(#a3170c, #fe9578);
+}
+
+
+#table_gl{
+border: 0px;
+border-spacing: 0px;
+width: 100%;
+}
+
+
+#table_title_gl{
+position: absolute;
+top: 0%;
+left: 0%;
+border: 0px;
+border-spacing: 0px;
+width: 100%;
+color: black;
+/*background-color: #ED9696;*/
+}
+
+#table_gl td{
+width: 100%;
+color:#FFFFFF;
+vertical-align: middle;
+border-bottom: 1px solid white;
+padding: 10pt 7pt 8pt 7pt;
+font-size: 10pt;
+box-shadow: 0 5px 5px -5px rgba(0,0,0,0.5);
+}
+
+
+@media (min-aspect-ratio: 1/2){
+#table_gl td{
+font-size: 12pt;
+}
+}
+
+@media (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/4) {
+#table_gl td{
+font-size: 12pt;
+}
+}
+
+@media (min-aspect-ratio: 10/16) and (max-aspect-ratio: 2/3) {
+#table_gl td{
+font-size: 12pt;
+}
+}
+
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 10/16) {
+#table_gl td{
+font-size: 12pt;
+}
+}
+
+@media (min-aspect-ratio: 1/2) and(max-aspect-ratio: 9/16){
+#table_gl td{
+font-size: 12pt;
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="Div_Main" id="div_main">
+<table id="table_gl"></table>
+</div>
+
+<script type="text/javascript">
+var isInDevelopment=false;
+setScrollDetect(['div_main']);
+
+function refreshGL(){
+o('table_gl').innerHTML='';
+for(var i=0; i<gl.length; i++){
+
+if(i!=0){
+var tr2=ce('tr');
+var td2=ce('td');
+td2.style.height="1.8vh";
+td2.style.padding='0px';
+td2.colSpan='3';
+td2.style.border='0';
+tr2.appendChild(td2);
+o('table_gl').appendChild(tr2);
+}
+
+var tr=ce('tr');
+tr.style.lineHeight="40px";
+var td=ce('td');
+td.style.backgroundColor = 'rgba(255,255,255,0.5)';
+td.style.padding="0px";
+td.style.border="0";
+td.style.boxShadow = "none";
+td.style.color='black';
+td.style.textAlign="center";
+td.style.textTransform="uppercase";
+td.colSpan = '3';
+td.innerHTML=gl[i].title;
+tr.appendChild(td);
+o('table_gl').appendChild(tr);
+for(var j=0; j<gl[i].gl.length; j++){
+var tr_1=ce('tr');
+var td_left=ce('td');
+var td_right=ce('td');
+
+td_left.style.border="0";
+td_left.style.width="2%";
+td_left.style.boxShadow = "none";
+
+td_right.style.border="0";
+td_right.style.width="2%";
+td_right.style.boxShadow = "none";
+
+
+var td_1=ce('td');
+td_1.innerHTML=gl[i].gl[j].name;
+tr_1.appendChild(td_left);
+tr_1.appendChild(td_1);
+tr_1.appendChild(td_right);
+tr_1.ondblclick=(function(_i,_j){return function(){if(isInDevelopment)toDetails(_i,_j);};})(i,j);
+tr_1.ontouchend=(function(_i,_j){return function(){if(isInDevelopment)return;toDetails(_i,_j);};})(i,j);
+
+o('table_gl').appendChild(tr_1);
+
+}
+}
+}
+
+
+function toDetails(_i, _j){
+if(scrolled)return;
+var osandbox_link=location.href.split('/web/');
+var sandbox_link='';
+for(var i=0; i<osandbox_link.length; i++){
+if(i!=0)sandbox_link=sandbox_link+osandbox_link[i];
+}
+osandbox_link=sandbox_link.split('/');
+sandbox_link='';
+for(var i=0; i<osandbox_link.length; i++){
+if(i!=osandbox_link.length-1)sandbox_link=sandbox_link+osandbox_link[i]+'/';
+}
+sandbox_link=sandbox_link+'gl2';
+var send_data={"link":sandbox_link, "data":{"i":_i,"k":_j}};
+//if(isInDevelopment)window.parent.APPINAPP_VC(send_data);
+//else Phone.toPageWithLink('VC',{"link":sandbox_link,"title":"Glossary", "data":send_data.data});
+Phone.toPageWithLink('VC',{"link":sandbox_link,"title":"Glossary", "data":send_data.data});
+}
+
+
+function setIsInDevelopment(){
+isInDevelopment=true;
+}
+function resetDataAndRefresh(_data){
+gl=_data;
+refreshGL();
+}
+
+
+window.onload=function(){
+refreshGL();
+}
+</script>
+</body>
+</html>

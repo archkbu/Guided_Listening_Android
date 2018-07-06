@@ -1,0 +1,106 @@
+body{
+-webkit-overflow-scrolling: touch;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+width: 100vw;
+height: 100vh;
+color: rgb(45,45,45);
+padding: 0px;
+margin: 0;
+overflow: hidden;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 12pt;
+background-color: white;
+}
+
+a{
+text-decoration: inherit;
+color: inherit;
+}
+
+.Div_Main{
+position: absolute;
+top: 0%;
+left: 0%;
+width: 100%;
+height: 100%;
+padding: 0;
+margin: 0;
+overflow-x: hidden;
+overflow-y: auto;
+}
+
+
+.Div_GiftRoot{
+position: absolute;
+bottom: 0px;
+left: 0px;
+width: 100vw;
+height: 45vh;
+background-color: rgba(10,10,10,0.83);
+}
+
+#div_giftsRoot{
+width: 100%;
+height: 88%;
+}
+
+.Table_GiftsMenu{
+width: 100%;
+height: 100%;
+border: 0px;
+border-spacing: 0px;
+padding: 0px;
+}
+.Table_GiftsMenu td{
+width: 25%;
+border: 1px solid rgba(0,0,0,0.3);
+border-spacing: 0px;
+padding: 0px;
+color: rgba(255,255,255,0.83);
+font-size: 9pt;
+text-align: center;
+vertical-align: middle;
+}
+.Table_GiftsMenu img{
+width: 79%;
+border: 0px;
+}
+
+.swiper-pagination{
+position: static;
+}
+
+.swiper-pagination-bullet-active{
+background: rgb(120,120,120);
+}
+
+
+
+@media(max-height: 480px){ /* iPhone 4 */
+.Table_GiftsMenu td{
+font-size: 7pt;
+}
+}
+
+@media(min-height: 481px) and (max-height: 568px){ /* iPhone 5 */
+.Table_GiftsMenu td{
+font-size: 8pt;
+}
+}
+
+@media(min-height: 569px) and (max-height: 667px){ /* iPhone 6 */
+.Table_GiftsMenu td{
+font-size: 8.5pt;
+}
+}
+
+@media(min-height: 668px) and (max-height: 959px){ /* iPhone 6 Plus */
+    
+}
+
+@media(min-height: 960px) and (min-width: 768px){  /* iPad */
+.Table_GiftsMenu td{
+font-size: 11pt;
+}
+}

@@ -1,0 +1,1 @@
+var pageSettings={"title":"Introduction to<br>Project Management","author":"by Dr. ABC XXX","banner_image":"bg.jpg","menu_button_1":"Button 1","menu_button_2":"Button 2","menu_button_3":"About"};

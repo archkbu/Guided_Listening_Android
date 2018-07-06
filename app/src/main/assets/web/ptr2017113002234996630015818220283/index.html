@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="minimum-scale=1, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="../css_global.css" />
+<script type="text/javascript" src="../js_global.js"></script>
+<script type="text/javascript" src="../w2p.js"></script>
+<title>guided listening</title>
+<style>
+@font-face {
+font-family: "HelveticaNeue-Light";
+src: url("../font/HelveticaNeue-Light-08.ttf");
+}
+
+body{
+	background: linear-gradient(#a3170c, #fe9578);
+	background-size: 100% 100%;
+	color:#FFFFFF;
+}
+
+#block_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.week{
+	font-family: 'HelveticaNeue-Light';
+	margin: 2% 4%;
+	font-size: 12pt;
+}
+
+.img_title{
+	width: 100%;
+}
+
+@media (min-aspect-ratio: 1/2){
+	.week{
+		font-family: 'HelveticaNeue-Light';
+		margin: 2% 4%;
+		font-size: 12pt;
+		width: 50%;
+	}
+}
+
+@media (min-aspect-ratio: 2/3) and (max-aspect-ratio: 3/4) {
+	.week{
+		font-family: 'HelveticaNeue-Light';
+		margin: 2% 4%;
+		font-size: 12pt;
+		width: 50%;
+	}
+
+}
+
+@media (min-aspect-ratio: 10/16) and (max-aspect-ratio: 2/3) {
+	.week{
+		font-family: 'HelveticaNeue-Light';
+		margin: 2% 4%;
+		font-size: 12pt;
+	}
+}
+
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 10/16) {
+	.week{
+		font-family: 'HelveticaNeue-Light';
+		margin: 2% 4%;
+		font-size: 12pt;
+	}
+}
+
+@media (min-aspect-ratio: 1/2) and(max-aspect-ratio: 9/16){
+	.week{
+		font-family: 'HelveticaNeue-Light';
+		margin: 2% 4%;
+		font-size: 12pt;
+	}
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="Div_Main" id="div_main">
+<div id="block_container">
+    <div class="week" onclick="toDetails(0)">week 1<br/><img class="img_title" src="week1.png"/></div>
+    <div class="week" onclick="toDetails(1)">week 2<br/><img class="img_title"  src="week2.png"/></div>
+</div>
+<div id="block_container">
+    <div class="week" onclick="toDetails(2)">week 3<br/><img class="img_title"  src="week3.png"/></div>
+    <div class="week" onclick="toDetails(3)">week 4<br/><img class="img_title"  src="week4.png"/></div>
+</div>
+
+<div id="block_container">
+    <div class="week" onclick="toDetails(4)">week 5<br/><img class="img_title"  src="week5.png"/></div>
+    <div class="week" onclick="toDetails(5)">week 6<br/><img class="img_title"  src="week6.png"/></div>
+</div>
+
+<div id="block_container">
+    <div class="week" onclick="toDetails(6)">week 7<br/><img class="img_title"  src="week7.png"/></div>
+    <div class="week" onclick="toDetails(7)">week 8<br/><img class="img_title"  src="week8.png"/></div>
+</div>
+
+<div id="block_container">
+    <div class="week" onclick="toDetails(8)">week 9<br/><img class="img_title"  src="week9.png"/></div>
+    <div class="week" onclick="toDetails(9)">week 10<br/><img class="img_title"  src="week10.png"/></div>
+</div>
+
+<div id="block_container">
+    <div class="week" onclick="toDetails(10)">week 11<br/><img class="img_title"  src="week11.png"/></div>
+    <div class="week" onclick="toDetails(11)">week 12<br/><img class="img_title"  src="week12.png"/></div>
+</div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+setScrollDetect(['div_main']);
+
+function toDetails(_i){
+var osandbox_link=location.href.split('/web/');
+var sandbox_link='';
+for(var i=0; i<osandbox_link.length; i++){
+if(i!=0)sandbox_link=sandbox_link+osandbox_link[i];
+}
+osandbox_link=sandbox_link.split('/');
+sandbox_link='';
+for(var i=0; i<osandbox_link.length; i++){
+if(i!=osandbox_link.length-1)sandbox_link=sandbox_link+osandbox_link[i]+'/';
+}
+sandbox_link=sandbox_link+'ptr2';
+var send_data={"link":sandbox_link, "data":{"i":_i}};
+
+Phone.toPageWithLink('VC',{"link":sandbox_link,"title":"Guided Listening", "data":send_data.data});
+}
+
+
+</script>
+</html>
